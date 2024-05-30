@@ -17,3 +17,9 @@ exports.getUser = (req, res) => {
         })
         .catch(err => res.status(500).send('Error retrieving user'));
 };
+
+exports.updateUser = (req, res) => {
+    User.findByIdAndUpdate(req.params.id, req.body, { new: true })
+        .then(user => res.status(200).json(user))
+        .catch(err => res.status(500).send('Error updating user'));
+};
