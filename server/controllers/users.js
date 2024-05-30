@@ -23,3 +23,9 @@ exports.updateUser = (req, res) => {
         .then(user => res.status(200).json(user))
         .catch(err => res.status(500).send('Error updating user'));
 };
+
+exports.deleteUser = (req, res) => {
+    User.findByIdAndDelete(req.params.id)
+        .then(() => res.status(204).send())
+        .catch(err => res.status(500).send('Error deleting user'));
+};
