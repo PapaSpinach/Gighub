@@ -6,3 +6,9 @@ exports.createJob = (req, res) => {
         .then(job => res.status(201).json(job))
         .catch(err => res.status(400).json(err));
 };
+
+exports.getAllJobs = (req, res) => {
+    Job.find()
+        .then(jobs => res.json(jobs))
+        .catch(err => res.status(500).json(err));
+};
