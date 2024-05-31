@@ -3,11 +3,11 @@ const { Schema, model } = require('mongoose');
 const contractorsSchema = new Schema({
     fullName: {type: String, required: true},
     userName: {type: String, required: true, unique: true},
-    passWord: {type: String, required: true},
-    email: {type: email, required: true},
+    password: {type: String, required: true},
+    email: {type: String, required: true},
     phoneNumber: {type: Number, required: true},
     specialties: [],
-    hourlyRate: Number, default: 25,
+    hourlyRate: { type: Number, default: 25 },
     ratings: []
 });
 
