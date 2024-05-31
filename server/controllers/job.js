@@ -18,3 +18,9 @@ exports.updateJob = (req, res) => {
         .then(job => res.json(job))
         .catch(err => res.status(400).json(err));
 };
+
+exports.deleteJob = (req, res) => {
+    Job.findByIdAndRemove(req.params.id)
+        .then(() => res.status(204).send())
+        .catch(err => res.status(500).json(err));
+};
