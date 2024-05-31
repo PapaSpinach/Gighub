@@ -16,3 +16,12 @@ exports.createJob = async (req, res) => {
         res.status(500).json({ message: 'Failed to create job', error });
     }
 };
+
+exports.getJobs = async (req, res) => {
+    try {
+        const jobs = await Job.find({ employer: req.user._id });
+        res.status(200).json(jobs);
+    } catch (error) {
+        res.status(500).json({ message: 'Failed to retrieve jobs', error });
+    }
+};
