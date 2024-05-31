@@ -46,7 +46,7 @@ exports.deleteJob = async (req, res) => {
         if (!deletedJob) {
             return res.status(404).json({ message: 'Job not found' });
         }
-        res.status(204).json({ message: 'Job deleted successfully' }); // No content to return after deletion
+        res.status(204).json({ message: 'Job deleted successfully' });
     } catch (error) {
         res.status(500).json({ message: 'Failed to delete job', error });
     }
