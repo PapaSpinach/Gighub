@@ -1,4 +1,4 @@
-const Job = require('../models/Job');
+const Job = require('../modles/jobs');
 
 exports.createJob = (req, res) => {
     const newJob = new Job(req.body);
