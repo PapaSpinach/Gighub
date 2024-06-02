@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 const Contractor = require('../models/Contractor');
 
 exports.createContractor = (req, res) => {
