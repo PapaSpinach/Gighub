@@ -31,3 +31,15 @@ exports.getClient = async (req, res) => {
         res.status(500).json({ message: 'Error retrieving client', error });
     }
 };
+
+exports.updateClient = async (req, res) => {
+    try {
+        const updatedClient = await Client.findByIdAndUpdate(req.params.id, req.body, { new: true });
+        if (!updatedClient) {
+            return res.status(404).json({ message: 'Client not found' });
+        }
+        res.status(200).json({ message: 'Client updated successfully', data: updatedClient });
+    } catch (error) {
+        res.status(500).json({ message: 'Error updating client', error });
+    }
+};
