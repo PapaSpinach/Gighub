@@ -14,5 +14,10 @@ router.route('/')
 .get(getAllClients)
 .post(createClient);
 
+router.route('/:id')
+.get(getClient)
+.put(updateClient)
+.delete(deleteClient);
+
 
 module.exports = router;
