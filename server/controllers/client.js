@@ -43,3 +43,15 @@ exports.updateClient = async (req, res) => {
         res.status(500).json({ message: 'Error updating client', error });
     }
 };
+
+exports.deleteClient = async (req, res) => {
+    try {
+        const deletedClient = await Client.findByIdAndDelete(req.params.id);
+        if (!deletedClient) {
+            return res.status(404).json({ message: 'Client not found' });
+        }
+        res.status(204).send(); // No content to return after deletion
+    } catch (error) {
+        res.status(500).json({ message: 'Error deleting client', error });
+    }
+};
