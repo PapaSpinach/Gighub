@@ -9,10 +9,6 @@ export default function Root() {
       path: '/',
     },
     {
-      label: 'Sign Up',
-      path: '/signup',
-    },
-    {
       label: 'Contractors',
       path: '/contractors',
     },
