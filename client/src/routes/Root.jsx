@@ -1,5 +1,5 @@
-import { Link} from '@chakra-ui/react';
-
+import { Link } from '@chakra-ui/react';
+import { Link as ReactRouterLink } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
 
 export default function Root() {
@@ -12,6 +12,10 @@ export default function Root() {
       label: 'Sign Up',
       path: '/signup',
     },
+    {
+      label: 'Contractors',
+      path: '/contractors',
+    },
   ];
 
   return (
@@ -20,7 +24,12 @@ export default function Root() {
         <div className="flex gap-5">
           {links.map((link) => {
             return (
-              <Link color={'white'} key={link.path} href={link.path}>
+              <Link
+                color={'white'}
+                key={link.path}
+                to={link.path}
+                as={ReactRouterLink}
+              >
                 {link.label}
               </Link>
             );
