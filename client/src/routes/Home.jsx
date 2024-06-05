@@ -10,6 +10,7 @@ import {
     TableContainer,
   } from '@chakra-ui/react';
   import homeImage from '/home.jpeg';
+  import Signup from '../components/SignUp';
   
   export default function Home() {
     const links = [
@@ -65,31 +66,35 @@ import {
           </nav>
         </div>
   
-        <div className="p-8">
-          <TableContainer maxW={[null, '600px']} marginX={'auto'}>
-            <Table variant="simple">
-              <Thead>
-                <Tr>
-                  <Th>Title</Th>
-                  <Th>Posted By</Th>
-                  <Th isNumeric>Hourly Pay</Th>
-                  <Th>Email</Th>
-                </Tr>
-              </Thead>
-              <Tbody>
-                {jobs.map((job) => {
-                  return (
-                    <Tr key={job.title}>
-                      <Td>{job.title}</Td>
-                      <Td>{job.postedBy}</Td>
-                      <Td isNumeric>${job.hourlyPay}</Td>
-                      <Td>{job.email}</Td>
-                    </Tr>
-                  );
-                })}
-              </Tbody>
-            </Table>
-          </TableContainer>
+        <div className="p-8 space-y-16 max-w-3xl mx-auto">
+          <Signup />
+          <div>
+            <Heading size='lg' mb="8px">Jobs</Heading>
+            <TableContainer>
+              <Table variant="simple">
+                <Thead>
+                  <Tr>
+                    <Th>Title</Th>
+                    <Th>Posted By</Th>
+                    <Th isNumeric>Hourly Pay</Th>
+                    <Th>Email</Th>
+                  </Tr>
+                </Thead>
+                <Tbody>
+                  {jobs.map((job) => {
+                    return (
+                      <Tr key={job.title}>
+                        <Td>{job.title}</Td>
+                        <Td>{job.postedBy}</Td>
+                        <Td isNumeric>${job.hourlyPay}</Td>
+                        <Td>{job.email}</Td>
+                      </Tr>
+                    );
+                  })}
+                </Tbody>
+              </Table>
+            </TableContainer>
+          </div>
         </div>
       </main>
     );
