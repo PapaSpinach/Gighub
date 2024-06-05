@@ -6,7 +6,7 @@ const jobsSchema = new Schema({
     postedBy: {type: String, required: true},
     description: {type: String, required: true},
     hourlyPay: Number,
-    email: {type: email, required: true},
+    email: {type: String, required: true},
     phoneNumber: {type: Number, required: true}
 
 });
