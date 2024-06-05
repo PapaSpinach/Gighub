@@ -1,7 +1,7 @@
 const Contractor = require('../models/contractors');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const contractors = require('../models/contractors');
+
 
 exports.register = async (req, res) => {
     try {
@@ -59,7 +59,7 @@ exports.protect = async (req, res, next) => {
         }
 
         const decoded = jwt.verify(token, 'your_jwt_secret');
-        req.user = await User.findById(decoded.userId).select('-password');
+        req.user = await Contractor.findById(decoded.userId).select('-password');
         next();
     } catch (error) {
         res.status(401).json({ message: 'Not authorized', error });
