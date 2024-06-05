@@ -1,32 +1,32 @@
-const User = require('../models/User');
+
+const Contractor = require('../models/Contractor');
 
 exports.createContractor = (req, res) => {
-    const newUser = new User(req.body);
-    newUser.save()
-        .then(() => res.status(201).send('User created successfully'))
-        .catch(err => res.status(500).send('Error creating user'));
+    const newContractor = new User(req.body);
+    newContractor.save()
+        .then(() => res.status(201).send('Contractor created successfully'))
+        .catch(err => res.status(500).send('Error creating contractor'));
 };
 
 exports.getContractor = (req, res) => {
-    User.findById(req.params.id)
-        .then(user => {
-            if (!user) {
-                return res.status(404).send('User not found');
+    Contractor.findById(req.params.id)
+        .then(contractor => {
+            if (!contractor) {
+                return res.status(404).send('Contractor not found');
             }
             res.status(200).json(user);
         })
-        .catch(err => res.status(500).send('Error retrieving user'));
+        .catch(err => res.status(500).send('Error retrieving contractor'));
 };
 
 exports.updateContractor = (req, res) => {
-    User.findByIdAndUpdate(req.params.id, req.body, { new: true })
-        .then(user => res.status(200).json(user))
-        .catch(err => res.status(500).send('Error updating user'));
+    Contractor.findByIdAndUpdate(req.params.id, req.body, { new: true })
+        .then(contractor => res.status(200).json(contractor))
+        .catch(err => res.status(500).send('Error updating contractor'));
 };
 
 exports.deleteContractor = (req, res) => {
-    User.findByIdAndDelete(req.params.id)
+    Contractor.findByIdAndDelete(req.params.id)
         .then(() => res.status(204).send())
-        .catch(err => res.status(500).send('Error deleting user'));
+        .catch(err => res.status(500).send('Error deleting contractor'));
 };
-
