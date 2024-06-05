@@ -1,9 +1,9 @@
-const Client = require('../models/Client');
+const client = require('../models/clients');
 
 exports.getAllClients = async (req, res) => {
     try {
         console.log("Controller: Retrieving all clients...");
-        const clients = await Client.find();
+        const clients = await client.find();
         console.log("Controller: Clients found:", clients.length);
         res.status(200).json(clients);
     } catch (error) {
@@ -15,7 +15,7 @@ exports.getAllClients = async (req, res) => {
 exports.createClient = async (req, res) => {
     try {
         console.log("Controller: Creating a new client with data:", req.body);
-        const newClient = new Client(req.body);
+        const newClient = new client(req.body);
         await newClient.save();
         console.log("Controller: Client created successfully");
         res.status(201).json({ message: 'Client created successfully', data: newClient });
@@ -28,7 +28,7 @@ exports.createClient = async (req, res) => {
 exports.getClient = async (req, res) => {
     try {
         console.log(`Controller: Getting client with ID: ${req.params.id}`);
-        const client = await Client.findById(req.params.id);
+        const client = await client.findById(req.params.id);
         if (!client) {
             console.log("Controller: No client found with ID:", req.params.id);
             return res.status(404).json({ message: 'Client not found' });
@@ -44,7 +44,7 @@ exports.getClient = async (req, res) => {
 exports.updateClient = async (req, res) => {
     try {
         console.log(`Controller: Updating client with ID: ${req.params.id}, Data:`, req.body);
-        const updatedClient = await Client.findByIdAndUpdate(req.params.id, req.body, { new: true });
+        const updatedClient = await client.findByIdAndUpdate(req.params.id, req.body, { new: true });
         if (!updatedClient) {
             console.log("Controller: No client found with ID to update:", req.params.id);
             return res.status(404).json({ message: 'Client not found' });
@@ -60,7 +60,7 @@ exports.updateClient = async (req, res) => {
 exports.deleteClient = async (req, res) => {
     try {
         console.log(`Controller: Deleting client with ID: ${req.params.id}`);
-        const deletedClient = await Client.findByIdAndDelete(req.params.id);
+        const deletedClient = await client.findByIdAndDelete(req.params.id);
         if (!deletedClient) {
             console.log("Controller: No client found with ID to delete:", req.params.id);
             return res.status(404).json({ message: 'Client not found' });
