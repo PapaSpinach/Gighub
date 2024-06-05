@@ -7,7 +7,7 @@ const {
     createClient,
     updateClient,
     deleteClient,
-} = require('server/controllers/clientController')
+} = require('../../controllers/client.js')
 
 // router.route('/') use .get(function) and .post(function) to get or add new jobs
 router.route('/')
