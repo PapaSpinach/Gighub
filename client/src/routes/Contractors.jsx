@@ -1,28 +1,29 @@
+import { useQuery } from '@tanstack/react-query';
 import Contractor from '../components/Contractor';
+import { getAllContractors } from '../api/contractors';
+import { Spinner } from '@chakra-ui/react';
 
 export default function Contractors() {
-  const contractors = [
-    {
-      fullName: 'Aaron Beckles',
-      email: 'aaron@example.com',
-      phoneNumber: 1234567890,
-      specialties: ['Plumbing', 'Framing'],
-      ratings: [1, 4, 5],
-    },
-    {
-      fullName: 'John Smith',
-      email: 'john@example.com',
-      phoneNumber: 1234567890,
-      specialties: ['Plumbing', 'Framing'],
-      ratings: [5, 4, 5],
-    },
-  ];
+  const { data, isPending } = useQuery({
+    queryKey: ['contractors'],
+    queryFn: getAllContractors,
+  });
 
-  return (
-    <main className="max-w-2xl mx-auto space-y-8 p-8">
-      {contractors.map((contractor) => (
-        <Contractor key={contractor.fullName} contractor={contractor} />
-      ))}
-    </main>
-  );
+  if (isPending)
+    return (
+      <div className="flex justify-center p-8">
+        <Spinner />
+      </div>
+    );
+
+  if (data)
+    return (
+      <main className="max-w-2xl mx-auto space-y-8 p-8">
+        {data.map((contractor) => (
+          <Contractor key={contractor.fullName} contractor={contractor} />
+        ))}
+      </main>
+    );
+
+  return <div>There was an error</div>;
 }
