@@ -6,16 +6,18 @@ export default function Contractor({ contractor }) {
   const { ratings } = contractor;
 
   const avgRating = avg(ratings);
-  
+
   return (
     <Card>
       <CardHeader display="flex" justifyContent="space-between">
         <Heading size="md">{contractor.fullName}</Heading>
         <div>
-          {[1, 2, 3, 4, 5].map(rating => {
+          {[1, 2, 3, 4, 5].map((rating) => {
             const isHighlighted = rating < avgRating;
 
-            return <StarIcon color={isHighlighted ? "gold" : "gray"} key={rating} />
+            return (
+              <StarIcon color={isHighlighted ? 'gold' : 'gray'} key={rating} />
+            );
           })}
         </div>
       </CardHeader>
@@ -59,7 +61,7 @@ function formatPhone(phone) {
 
 function avg(numbers) {
   if (!numbers.length) return 0;
-  
+
   const sum = numbers.reduce((v, acc) => acc + v);
 
   return sum / numbers.length;
