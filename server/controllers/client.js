@@ -28,13 +28,13 @@ exports.createClient = async (req, res) => {
 exports.getClient = async (req, res) => {
     try {
         console.log(`Controller: Getting client with ID: ${req.params.id}`);
-        const client = await client.findById(req.params.id);
-        if (!client) {
+        const thisClient = await client.findById(req.params.id);
+        if (!thisClient) {
             console.log("Controller: No client found with ID:", req.params.id);
             return res.status(404).json({ message: 'Client not found' });
         }
-        console.log("Controller: Client found:", client);
-        res.status(200).json(client);
+        console.log("Controller: Client found:", thisClient);
+        res.status(200).json(thisClient);
     } catch (error) {
         console.log("Controller Error: Failed to retrieve client", error);
         res.status(500).json({ message: 'Error retrieving client', error });
