@@ -20,13 +20,24 @@ export default function Contractors() {
     }
     
   }
-
   
+
   useEffect(() => {
     getContractors()
   }, [])
 
-  /*
+  
+  return (
+    <main className="max-w-2xl mx-auto space-y-8 p-8">
+      {contractors.map((contractor) => (
+        <Contractor key={contractor.fullName} contractor={contractor} />
+      ))}
+    </main>
+  );
+}
+
+
+/*
   const contractors = [
     {
       fullName: 'Aaron Beckles',
@@ -44,12 +55,3 @@ export default function Contractors() {
     },
   ];
   */
-
-  return (
-    <main className="max-w-2xl mx-auto space-y-8 p-8">
-      {contractors.map((contractor) => (
-        <Contractor key={contractor.fullName} contractor={contractor} />
-      ))}
-    </main>
-  );
-}
