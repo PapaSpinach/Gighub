@@ -44,7 +44,7 @@ exports.login = async (req, res) => {
       { expiresIn: '1h' }
     );
 
-    res.json({ token });
+    res.json({ token, currentUser: contractor });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Error logging in', error });

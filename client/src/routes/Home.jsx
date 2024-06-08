@@ -1,20 +1,10 @@
-import {
-  Button,
-  Heading,
-  Table,
-  Thead,
-  Tbody,
-  Tr,
-  Th,
-  Td,
-  TableContainer,
-  Link,
-} from '@chakra-ui/react';
+import { Button, Heading, Link } from '@chakra-ui/react';
 import homeImage from '/home.jpeg';
 import Signup from '../components/SignUp';
 import LogIn from '../components/LogIn';
 import { useState } from 'react';
 import { useAuth } from '../hooks';
+import JobsTable from '../components/JobsTable';
 
 export default function Home() {
   const [showSignup, setShowSignup] = useState(true);
@@ -25,30 +15,14 @@ export default function Home() {
       label: 'Find a Job',
       path: '/jobs',
     },
-    {
-      label: 'Post a Job',
-      path: '/jobs/create',
-    },
   ];
 
-  const jobs = [
-    {
-      title: 'My job',
-      postedBy: 'Aaron',
-      description: 'This is a job',
-      hourlyPay: 10,
-      email: 'aaron@example.com',
-      phoneNumber: 1234567890,
-    },
-    {
-      title: 'Another job',
-      postedBy: 'Bob',
-      description: 'This is another job',
-      hourlyPay: 20,
-      email: 'bob@example.com',
-      phoneNumber: 1234567890,
-    },
-  ];
+  if (isLoggedIn) {
+    links.push({
+      label: 'Post a Job',
+      path: '/jobs/create',
+    });
+  }
 
   return (
     <main>
@@ -97,30 +71,7 @@ export default function Home() {
           <Heading size="lg" mb="8px">
             Jobs
           </Heading>
-          <TableContainer>
-            <Table variant="simple">
-              <Thead>
-                <Tr>
-                  <Th>Title</Th>
-                  <Th>Posted By</Th>
-                  <Th isNumeric>Hourly Pay</Th>
-                  <Th>Email</Th>
-                </Tr>
-              </Thead>
-              <Tbody>
-                {jobs.map((job) => {
-                  return (
-                    <Tr key={job.title}>
-                      <Td>{job.title}</Td>
-                      <Td>{job.postedBy}</Td>
-                      <Td isNumeric>${job.hourlyPay}</Td>
-                      <Td>{job.email}</Td>
-                    </Tr>
-                  );
-                })}
-              </Tbody>
-            </Table>
-          </TableContainer>
+          <JobsTable />
         </div>
       </div>
     </main>

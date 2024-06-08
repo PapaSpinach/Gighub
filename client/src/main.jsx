@@ -7,6 +7,7 @@ import Root from './routes/Root.jsx';
 import Home from './routes/Home.jsx';
 import Contractors from './routes/Contractors.jsx';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import CreateJob from './routes/CreateJob.jsx';
 
 const queryClient = new QueryClient();
 
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
       {
         path: '/contractors',
         element: <Contractors />,
+      },
+      {
+        path: '/jobs/create',
+        element: <CreateJob />,
       },
     ],
   },

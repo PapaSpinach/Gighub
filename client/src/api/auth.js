@@ -14,10 +14,10 @@ export async function register({
 }
 
 export async function login({ email, password }) {
-  const { token } = await fetchAPI('/login', {
+  const { token, currentUser } = await fetchAPI('/login', {
     method: 'POST',
     body: JSON.stringify({ email, password }),
   });
 
-  return token;
+  return { token, currentUser };
 }
