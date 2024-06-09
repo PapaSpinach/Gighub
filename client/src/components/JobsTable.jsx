@@ -39,7 +39,7 @@ export default function JobsTable() {
         <Tbody>
           {jobs.map((job) => {
             return (
-              <Tr key={job.title}>
+              <Tr key={job._id}>
                 <Td>{job.title}</Td>
                 <Td>{job.postedBy}</Td>
                 <Td isNumeric>${job.hourlyPay}</Td>

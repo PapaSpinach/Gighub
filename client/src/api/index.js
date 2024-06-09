@@ -7,7 +7,7 @@ export async function fetchAPI(url, options) {
     ...options,
     headers: {
       'Content-Type': 'application/json',
-      Authorization: authToken ? `Bearer ${authToken}` : undefined,
+      Authorization: authToken ? `Bearer ${JSON.parse(authToken)}` : undefined,
     },
   });
 

@@ -30,9 +30,6 @@ export default function CreateJob() {
     title: '',
     description: '',
     hourlyPay: 20,
-    postedBy: currentUser?.username ?? '',
-    email: currentUser?.email ?? '',
-    phoneNumber: currentUser?.phoneNumber ?? 0,
   });
 
   if (!currentUser) {

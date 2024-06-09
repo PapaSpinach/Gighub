@@ -2,6 +2,7 @@ import {
   FormControl,
   FormLabel,
   Input,
+  InputLeftAddon,
   Stack,
   Textarea,
 } from '@chakra-ui/react';
@@ -27,11 +28,11 @@ export function JobForm({ job, setJob }) {
 
       <FormControl>
         <FormLabel>Hourly Pay</FormLabel>
+        <InputLeftAddon>$</InputLeftAddon>
         <Input
           value={job.hourlyPay}
           type="number"
           onInput={(e) => setJob({ hourlyPay: Number(e.target.value) })}
-          prefix="$"
         />
       </FormControl>
     </Stack>

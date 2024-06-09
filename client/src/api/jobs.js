@@ -4,23 +4,13 @@ export function getAllJobs() {
   return fetchAPI('/jobs');
 }
 
-export function createJob({
-  title,
-  postedBy,
-  description,
-  hourlyPay,
-  email,
-  phoneNumber,
-}) {
+export function createJob({ title, description, hourlyPay }) {
   return fetchAPI('/jobs/createJob', {
     method: 'POST',
     body: JSON.stringify({
       title,
-      postedBy,
       description,
       hourlyPay,
-      email,
-      phoneNumber,
     }),
   });
 }

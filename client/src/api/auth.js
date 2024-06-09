@@ -6,10 +6,20 @@ export async function register({
   password,
   fullName,
   phoneNumber,
+  specialties,
 }) {
+  const formattedSpecialties = specialties.split('\n');
+
   await fetchAPI('/register', {
     method: 'POST',
-    body: JSON.stringify({ username, email, password, fullName, phoneNumber }),
+    body: JSON.stringify({
+      username,
+      email,
+      password,
+      fullName,
+      phoneNumber,
+      specialties: formattedSpecialties,
+    }),
   });
 }
 

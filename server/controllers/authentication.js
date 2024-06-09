@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 
 exports.register = async (req, res) => {
   try {
-    const { username, email, password, fullName, phoneNumber } = req.body;
+    const { username, email, password, fullName, phoneNumber, specialties } = req.body;
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -14,6 +14,7 @@ exports.register = async (req, res) => {
       password: hashedPassword,
       fullName,
       phoneNumber: Number(phoneNumber),
+      specialties
     });
 
     await newContractor.save();
@@ -68,7 +69,7 @@ exports.protect = async (req, res, next) => {
     }
 
     const decoded = jwt.verify(token, 'your_jwt_secret');
-    req.user = await Contractor.findById(decoded.userId).select('-password');
+    req.user = await Contractor.findById(decoded.contractorId).select('-password');
     next();
   } catch (error) {
     res.status(401).json({ message: 'Not authorized', error });

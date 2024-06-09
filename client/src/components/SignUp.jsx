@@ -7,8 +7,10 @@ import {
   Button,
   FormControl,
   FormLabel,
+  FormHelperText,
   Input,
   Stack,
+  Textarea,
 } from '@chakra-ui/react';
 import { useAuth } from '../hooks';
 import { useState } from 'react';
@@ -21,6 +23,7 @@ export default function Signup() {
   const [password, setPassword] = useState('');
   const [fullName, setFullName] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
+  const [specialties, setSpecialties] = useState('');
 
   return (
     <Card>
@@ -73,13 +76,29 @@ export default function Signup() {
               onInput={(e) => setPhoneNumber(e.target.value)}
             />
           </FormControl>
+
+          <FormControl>
+            <FormLabel>Specialties</FormLabel>
+            <FormHelperText>Put each specialty on its own line</FormHelperText>
+            <Textarea
+              value={specialties}
+              onInput={(e) => setSpecialties(e.target.value)}
+            />
+          </FormControl>
         </Stack>
       </CardBody>
 
       <CardFooter>
         <Button
           onClick={() =>
-            auth.register({ email, username, password, fullName, phoneNumber })
+            auth.register({
+              email,
+              username,
+              password,
+              fullName,
+              phoneNumber,
+              specialties,
+            })
           }
         >
           Sign Up

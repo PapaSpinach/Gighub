@@ -1,7 +1,13 @@
 const Job = require('../models/jobs');
 
 exports.createJob = (req, res) => {
-    const newJob = new Job(req.body);
+    const newJob = new Job({
+      ...req.body,
+      postedBy: req.user.username,
+      email: req.user.email,
+      phoneNumber: req.user.phoneNumber,
+    });
+
     newJob.save()
         .then(() => res.status(201).json(newJob))
         .catch(err => res.status(400).json(err));

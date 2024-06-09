@@ -10,6 +10,8 @@ updateJob,
 deleteJob
 } = require ('../../controllers/job');
 
+const { protect } = require('../../controllers/authentication');
+
 // router.route('/') use .get(function) and .post(function) to get or add new jobs
 
 // ENDPOINT IS /api/jobs
@@ -19,7 +21,7 @@ router.route('/').get(getAllJobs);
 router.route('/:jobId').get(getJob).put(updateJob).delete(deleteJob);
 
 // ENDPOINT IS /api/jobs/create
-router.route('/createJob').post(createJob);
+router.route('/createJob').post(protect, createJob);
 
 
 module.exports = router;
