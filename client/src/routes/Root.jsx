@@ -2,10 +2,10 @@ import { useEffect } from 'react';
 import { Link } from '@chakra-ui/react';
 import { Link as ReactRouterLink } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
+import { useAuth } from '../hooks';
 
 export default function Root() {
-
-
+  const { isLoggedIn, logOut } = useAuth();
 
   const links = [
     {
@@ -20,7 +20,7 @@ export default function Root() {
 
   return (
     <div>
-      <nav className="p-4 bg-black">
+      <nav className="p-4 bg-black flex justify-between">
         <div className="flex gap-5">
           {links.map((link) => {
             return (
@@ -35,6 +35,12 @@ export default function Root() {
             );
           })}
         </div>
+
+        {isLoggedIn && (
+          <Link color="white" onClick={logOut}>
+            Log Out
+          </Link>
+        )}
       </nav>
       <Outlet />
     </div>
