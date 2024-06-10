@@ -1,6 +1,7 @@
 import { useLocalStorage } from '@uidotdev/usehooks';
 import { useMutation } from '@tanstack/react-query';
 import { login, register } from './api/auth';
+import { useNavigate } from 'react-router-dom';
 
 export function useAuth() {
   const [token, setToken] = useLocalStorage('token');
@@ -21,6 +22,8 @@ export function useAuth() {
     },
   });
 
+  const navigate = useNavigate();
+
   return {
     isLoggedIn: !!token,
     logIn: loginQuery.mutate,
@@ -28,6 +31,7 @@ export function useAuth() {
     logOut: () => {
       setToken(null);
       setCurrentUser(null);
+      navigate('/');
     },
     currentUser: currentUser ? JSON.parse(currentUser) : null,
   };
