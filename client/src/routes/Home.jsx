@@ -10,12 +10,7 @@ export default function Home() {
   const [showSignup, setShowSignup] = useState(true);
   const { isLoggedIn } = useAuth();
 
-  const links = [
-    {
-      label: 'Find a Job',
-      path: '/jobs',
-    },
-  ];
+  const links = [];
 
   if (isLoggedIn) {
     links.push({
