@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { Link } from '@chakra-ui/react';
 import { Link as ReactRouterLink } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
