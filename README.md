@@ -56,6 +56,12 @@ N/A
 
 # References
 
+ [Mongo Routes](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/routes)
+ [React](https://www.w3schools.com/whatis/whatis_react.asp)
+ [Prettier](https://prettier.io/docs/en/)
+ [BCrypt](https://www.npmjs.com/package/bcrypt)
+ [Cors](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)
+
 # License
 
 This project is covered under MIT License
